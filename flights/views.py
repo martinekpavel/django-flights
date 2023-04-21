@@ -6,8 +6,13 @@ from .models import Flight, Passenger
 
 # Create your views here.
 def index(request):
+    if request.user.is_authenticated:
+        is_auth = True
+    else:
+        is_auth = False
     return render(request, "flights\index.html", {
-        "flights": Flight.objects.all()
+        "flights": Flight.objects.all(),
+        "auth": is_auth
     })
 
 def flight(request, flight_id):

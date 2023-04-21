@@ -13,5 +13,9 @@
   {% endfor %}
 </ul>
 
+{% if auth %}
+    <div>Fuck YES! You are: {{ request.user.first_name }}. You can <a href="{% url 'logout' %}">log out</a>.</div>
+{% endif %}
+
 {% endblock %}
 
